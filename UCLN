@@ -1,0 +1,65 @@
+# Số bậc thang là số tự nhiên có các chữ số đứng sau không nhỏ hơn chữ số đứng trước (ví dụ: 123; 233).
+# Viết chương trình nhập 2 số tự nhiên a, b (10< a ≤ b). In ra màn hình:
+#    + Ước chung lớn nhất của a và b
+#    + Phân số tối giản a/b.
+#    + Các số chính phương từ a đến b.
+#    + Số lượng các Số bậc thang từ a đến b.
+# Ví dụ: Với a = 32, b = 40 thì in ra kết quả: + UCLN la: 8
+#    + Phan so toi gian la: 4/5
+#    + Cac so chinh phuong la: 36
+#    + Co 7 So bac thang
+
+# Ước chung lớn nhất của a và b
+a = int(input("Nhập số tự nhiên a (10 < a): "))
+b = int(input("Nhập số tự nhiên b (a ≤ b): "))
+
+if 10 < a <= b:
+    x = a
+    y = b
+    while y != 0:
+        x, y = y, x % y
+
+    print(f"Ước chung lớn nhất của {a} và {b} là: {x}")
+else:
+    print("Điều kiện không thỏa mãn: 10 < a ≤ b")
+
+# Phân số tối giản a/b
+
+if 10 < a <= b:
+    x, y = a, b
+    while y != 0:
+        x, y = y, x % y
+    
+    ucln = x
+    
+    a_toi_gian = a // ucln
+    b_toi_gian = b // ucln
+    
+    print(f"Phân số tối giản của {a}/{b} là {a_toi_gian}/{b_toi_gian}")
+else:
+    print("Giá trị của a và b không thỏa mãn điều kiện 10 < a ≤ b")
+    
+# Các số chính phương từ a đến b.
+if 10 < a <= b:
+    print(f"Các số chính phương từ {a} đến {b} là:")
+    n = 1
+    while n * n <= b:
+        if a <= n * n <= b:
+            print(n * n)
+        n += 1
+else:
+    print("Giá trị của a và b không thỏa mãn điều kiện 10 < a ≤ b")
+    
+# Số lượng các Số bậc thang từ a đến b.
+if 10 < a <= b:
+    so_luong = 0
+    for i in range(a, b + 1):
+        s = str(i)
+        for c in range(len(s) - 1):
+            if s[c] > s[c + 1]:
+                break
+        else:
+            so_luong += 1
+    print(f"Số lượng các Số bậc thang từ {a} đến {b} là: {so_luong}")
+else:
+    print("Giá trị nhập vào không hợp lệ. Vui lòng nhập lại.")
